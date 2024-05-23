@@ -1,0 +1,1751 @@
+backend:
+  name: git-gateway
+  accept_roles:
+    - admin
+    - editor
+  branch: master
+media_folder: theme/assets/images
+public_folder: /assets/images
+collections:
+  - name: pages
+    label: Pages
+    identifier_field: title
+    extension: md
+    create: false
+    delete: false
+    slug: '{{slug}}'
+    editor:
+      preview: false
+    folder: cms/pages
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '{{slug}}.html'
+      - &ref_0
+        label: Seo
+        name: seo
+        widget: object
+        collapsed: true
+        fields:
+          - label: Title
+            name: title
+            widget: string
+            required: false
+          - label: Description
+            name: description
+            widget: string
+            required: false
+          - label: No index
+            name: noindex
+            widget: boolean
+            default: false
+            required: false
+          - label: Open Graph Title
+            name: og:title
+            widget: string
+            required: false
+          - label: Open Graph Image
+            name: og:image
+            widget: image
+            required: false
+            media_library:
+              config:
+                multiple: false
+          - label: Twitter Title
+            name: twitter:title
+            widget: string
+            default: summary
+            required: false
+          - label: Twitter Card
+            name: twitter:card
+            widget: string
+            default: summary
+            required: false
+          - label: Twitter Site
+            name: twitter:site
+            widget: string
+            required: false
+          - label: Twitter Creator
+            name: twitter:creator
+            widget: string
+            required: false
+          - label: Twitter Image
+            name: twitter:image
+            widget: image
+            required: false
+            media_library:
+              config:
+                multiple: false
+          - label: Additional HTML tags
+            name: additional_tags
+            widget: text
+            required: false
+  - name: blogs
+    label: Blogs
+    folder: cms/blogs
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_background-image
+        label: Background Image
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_date
+        label: Date
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_blogs-description
+        label: Blogs Description
+        widget: string
+        required: false
+      - hint: ''
+        name: f_single-blog-image
+        label: Single Blog Image
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_content-head1
+        label: Content head1
+        widget: string
+        required: false
+      - hint: ''
+        name: f_content-para1
+        label: Content para1
+        widget: string
+        required: false
+      - hint: ''
+        name: f_content-head2
+        label: Content head2
+        widget: string
+        required: false
+      - hint: ''
+        name: f_content-para2
+        label: Content para2
+        widget: string
+        required: false
+      - hint: ''
+        name: f_content-head3
+        label: Content head3
+        widget: string
+        required: false
+      - hint: ''
+        name: f_content-para3
+        label: Content para3
+        widget: string
+        required: false
+      - hint: ''
+        name: f_content-head4
+        label: Content head4
+        widget: string
+        required: false
+      - hint: ''
+        name: f_content-para4
+        label: Content para4
+        widget: string
+        required: false
+      - hint: ''
+        name: f_content-head5
+        label: Content head5
+        widget: string
+        required: false
+      - hint: ''
+        name: f_content-para5
+        label: Content para5
+        widget: string
+        required: false
+      - hint: ''
+        name: f_conclusion-header
+        label: Conclusion header
+        widget: string
+        required: false
+      - hint: ''
+        name: f_conclusion-description
+        label: Conclusion Description
+        widget: string
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: blogs
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[blogs].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: products
+    label: Products
+    folder: cms/products
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_product-picture
+        label: Product picture
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_index
+        label: index
+        widget: number
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: products
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[products].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - label: Theme Settings
+    name: settings
+    identifier_field: title
+    extension: json
+    create: false
+    delete: false
+    slug: '{{slug}}'
+    editor:
+      preview: false
+    files:
+      - label: General
+        name: site
+        file: cms/_data/settings/site.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: General
+          - hint: Full domain url (needed for a correct sitemap file)
+            name: domain
+            label: Domain
+            widget: string
+            required: false
+          - name: favicon
+            label: Favicon
+            widget: image
+            allow_multiple: false
+            required: false
+          - name: apple_touch_icon
+            label: Apple Touch Icon
+            widget: image
+            allow_multiple: false
+            required: false
+          - name: header_additional_content
+            label: Additional Content Header
+            hint: Content here will be placed before </head> tag
+            widget: text
+            required: false
+          - name: footer_additional_content
+            label: Additional Content Footer
+            hint: Content here will be placed before </body> tag
+            widget: text
+            required: false
+          - name: images_optimization
+            label: Images Optimization
+            widget: object
+            collapsed: false
+            fields:
+              - label: Image Formats
+                name: formats
+                widget: select
+                multiple: true
+                options:
+                  - label: Avif
+                    value: avif
+                  - label: Webp
+                    value: webp
+              - label: Image Dimensions
+                name: dimensions
+                widget: select
+                multiple: true
+                options:
+                  - label: '500'
+                    value: 500
+                  - label: '800'
+                    value: 800
+                  - label: '1080'
+                    value: 1080
+                  - label: '1600'
+                    value: 1600
+                  - label: '2000'
+                    value: 2000
+                  - label: '2600'
+                    value: 2600
+      - label: Colors
+        name: colors
+        file: cms/_data/colors.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Colors
+      - label: Texts
+        name: texts
+        file: cms/_data/texts.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Texts
+          - hint: 'Original text: Home, key: 2268ff'
+            label: Text
+            name: 2268ff
+            widget: string
+          - hint: 'Original text: About Us, key: 645efc51'
+            label: Text
+            name: 645efc51
+            widget: string
+          - hint: 'Original text: Products, key: -37f9ca7c'
+            label: Text
+            name: '-37f9ca7c'
+            widget: string
+          - hint: 'Original text: Blogs, key: 3d4d4f1'
+            label: Text
+            name: 3d4d4f1
+            widget: string
+          - hint: 'Original text: Contact us, key: 7f274abe'
+            label: Text
+            name: 7f274abe
+            widget: string
+          - hint: 'Original text: Let’s Talk, key: -311e78a9'
+            label: Text
+            name: '-311e78a9'
+            widget: string
+          - hint: 'Original text: Shop Now, key: -10d26d54'
+            label: Text
+            name: '-10d26d54'
+            widget: string
+          - hint: 'Original text: Welcome to Vrisham Organic, key: 23779e72'
+            label: Text
+            name: '23779e72'
+            widget: string
+          - hint: 'Original text: Your Ticket to Nature , key: 5826d67b'
+            label: Text
+            name: 5826d67b
+            widget: string
+          - hint: 'Original text: Fresh Food!, key: 6095e9d1'
+            label: Text
+            name: 6095e9d1
+            widget: string
+          - hint: >-
+              Original text: At Vrisham, we're more than just a farm-to-table
+              experience. We're a movement towards wholesome living., key:
+              -4b8b9733
+            label: Text
+            name: '-4b8b9733'
+            widget: text
+          - hint: 'Original text: Visit Our Farm, key: 74d1c41f'
+            label: Text
+            name: 74d1c41f
+            widget: string
+          - hint: 'Original text: Self-Farmed Produce, key: 7c8cfb96'
+            label: Text
+            name: 7c8cfb96
+            widget: string
+          - hint: 'Original text: Farm-to-Door Delivery, key: 5265eceb'
+            label: Text
+            name: 5265eceb
+            widget: string
+          - hint: 'Original text: Fast & Fresh, key: -7dc7ab10'
+            label: Text
+            name: '-7dc7ab10'
+            widget: string
+          - hint: 'Original text: Health Holic, key: -30c616a5'
+            label: Text
+            name: '-30c616a5'
+            widget: string
+          - hint: 'Original text: Worried, key: -41dc0f70'
+            label: Text
+            name: '-41dc0f70'
+            widget: string
+          - hint: 'Original text:  About What You Eat ?, key: 39cd2ced'
+            label: Text
+            name: 39cd2ced
+            widget: string
+          - hint: 'Original text: Hidden Health Risks, key: 38193356'
+            label: Text
+            name: '38193356'
+            widget: string
+          - hint: >-
+              Original text: Many store-bought foods contain pesticides and
+              additives that can pose health risks over time. Regular
+              consumption of such foods may lead to unwanted health issues, key:
+              7ac5bba1
+            label: Text
+            name: 7ac5bba1
+            widget: text
+          - hint: 'Original text: Lack of Variety & Quality, key: 6d3c5667'
+            label: Text
+            name: 6d3c5667
+            widget: string
+          - hint: >-
+              Original text: Traditional grocery stores often offer limited
+              options when it comes to fresh produce. Additionally, the quality
+              of fruits and vegetables may be compromised due to long
+              transportation and storage times., key: 3db40a59
+            label: Text
+            name: 3db40a59
+            widget: text
+          - hint: 'Original text: Disconnect from the Source, key: -6d9c8a64'
+            label: Text
+            name: '-6d9c8a64'
+            widget: string
+          - hint: >-
+              Original text: Many consumers are disconnected from the source of
+              their food, unaware of the journey it takes from farm to table.
+              This lack of connection can lead to a lack of appreciation for the
+              effort and care that goes into producing our food., key: -375d7c10
+            label: Text
+            name: '-375d7c10'
+            widget: text
+          - hint: 'Original text: Are You Getting Fresh Vegetables?, key: -3be4a1ee'
+            label: Text
+            name: '-3be4a1ee'
+            widget: string
+          - hint: >-
+              Original text: Store-bought vegetables can lose flavor and
+              nutrients during extended transit. Often, they’re not fresh by the
+              time they reach your kitchen, impacting taste and nutritional
+              value., key: 56f98664
+            label: Text
+            name: 56f98664
+            widget: text
+          - hint: 'Original text: Explore Vrisham Organic, key: 56cec8cc'
+            label: Text
+            name: 56cec8cc
+            widget: string
+          - hint: 'Original text: A Story of, key: -69015ff'
+            label: Text
+            name: '-69015ff'
+            widget: string
+          - hint: 'Original text: Healthy Living, key: -7a298134'
+            label: Text
+            name: '-7a298134'
+            widget: string
+          - hint: >-
+              Original text: Our mission is simple: to provide you with the
+              highest quality organic produce, directly from our trusted partner
+              farms., key: -79685ab6
+            label: Text
+            name: '-79685ab6'
+            widget: text
+          - hint: 'Original text: 01, key: 601'
+            label: Text
+            name: '601'
+            widget: string
+          - hint: 'Original text: Begin Your Adventure with Vrisham, key: 7fe114fa'
+            label: Text
+            name: 7fe114fa
+            widget: string
+          - hint: >-
+              Original text: Explore our website or app, order your favorite
+              organic products, and start your journey to a healthier
+              lifestyle., key: -2b9ab34f
+            label: Text
+            name: '-2b9ab34f'
+            widget: text
+          - hint: 'Original text: 02, key: 602'
+            label: Text
+            name: '602'
+            widget: string
+          - hint: 'Original text: The Magic of Organic Farming, key: 6e9d4d90'
+            label: Text
+            name: 6e9d4d90
+            widget: string
+          - hint: >-
+              Original text: Discover the secrets of organic agriculture, why
+              it’s great for your health and the planet, and why we’re so
+              passionate about it here at Vrisham., key: 119bea1d
+            label: Text
+            name: 119bea1d
+            widget: text
+          - hint: 'Original text: 03, key: 603'
+            label: Text
+            name: '603'
+            widget: string
+          - hint: 'Original text: Meet Our Incredible Farmers, key: -377d1f9e'
+            label: Text
+            name: '-377d1f9e'
+            widget: string
+          - hint: >-
+              Original text: Get ready to meet the amazing farmers who make it
+              all possible.Hear their stories, learn about their farming
+              methods, and see how they’re making a difference in their
+              communities., key: -750686bb
+            label: Text
+            name: '-750686bb'
+            widget: text
+          - hint: 'Original text: 04, key: 604'
+            label: Text
+            name: '604'
+            widget: string
+          - hint: 'Original text: Cook Up Some Goodness with Vrisham, key: 4628a621'
+            label: Text
+            name: 4628a621
+            widget: string
+          - hint: >-
+              Original text: Feeling hungry? We’ve got you covered! Dive into
+              our collection of mouthwatering recipes made with Vrisham’s
+              organic ingredients. From simple snacks to gourmet meals, there’s
+              something here to satisfy every craving., key: -5d266010
+            label: Text
+            name: '-5d266010'
+            widget: text
+          - hint: 'Original text: Know More, key: -30663036'
+            label: Text
+            name: '-30663036'
+            widget: string
+          - hint: 'Original text: 6K+, key: d3f6'
+            label: Text
+            name: d3f6
+            widget: string
+          - hint: 'Original text: Happy Customers, key: 5291b6d5'
+            label: Text
+            name: 5291b6d5
+            widget: string
+          - hint: 'Original text: 100%, key: 170054'
+            label: Text
+            name: '170054'
+            widget: string
+          - hint: 'Original text: Organic Products, key: 8b79339'
+            label: Text
+            name: 8b79339
+            widget: string
+          - hint: 'Original text: Trusted Customers, key: 19148c2c'
+            label: Text
+            name: 19148c2c
+            widget: string
+          - hint: 'Original text: 100+, key: 17005a'
+            label: Text
+            name: 17005a
+            widget: string
+          - hint: 'Original text: Organic Farmers, key: -2d8a9305'
+            label: Text
+            name: '-2d8a9305'
+            widget: string
+          - hint: 'Original text: For a Healthy life, key: 323b8575'
+            label: Text
+            name: 323b8575
+            widget: string
+          - hint: >-
+              Original text: Discover the Organic Way For your engaged life,
+              key: -f7d4b7d
+            label: Text
+            name: '-f7d4b7d'
+            widget: string
+          - hint: >-
+              Original text: We’re all about being upfront with you. Learn how
+              we do things, from how we grow our food to how we get it to your
+              table. You deserve to know every detail., key: -3974ac28
+            label: Text
+            name: '-3974ac28'
+            widget: text
+          - hint: 'Original text: 01., key: ba4d'
+            label: Text
+            name: ba4d
+            widget: string
+          - hint: 'Original text: Farm-Fresh Goodness, key: -58366623'
+            label: Text
+            name: '-58366623'
+            widget: string
+          - hint: >-
+              Original text: Imagine veggies so fresh, they practically leap off
+              your plate! That’s what you get with Vrisham. We skip the
+              middleman to bring you food straight from the farm, so you taste
+              the difference. Fresh from the farm to your door in just one day.,
+              key: -7b3afffb
+            label: Text
+            name: '-7b3afffb'
+            widget: text
+          - hint: 'Original text: 02., key: ba6c'
+            label: Text
+            name: ba6c
+            widget: string
+          - hint: 'Original text: No Nasty Chemicals, key: 310a2767'
+            label: Text
+            name: 310a2767
+            widget: string
+          - hint: >-
+              Original text: Worried about pesticides? Don’t be! With Vrisham,
+              you can trust that our food is free from harmful chemicals. We’re
+              all about keeping things clean & green., key: 77cb8a45
+            label: Text
+            name: 77cb8a45
+            widget: text
+          - hint: 'Original text: 03., key: ba8b'
+            label: Text
+            name: ba8b
+            widget: string
+          - hint: 'Original text: Rediscover Good Old Veggies, key: 63ae7510'
+            label: Text
+            name: 63ae7510
+            widget: string
+          - hint: >-
+              Original text: From the classics to the quirky, we’ve got all
+              kinds of veggies for you to try. Let’s explore the wonderful world
+              of fresh, healthy eating together!, key: -3aa43922
+            label: Text
+            name: '-3aa43922'
+            widget: text
+          - hint: 'Original text: Ready to Experience , key: -541de212'
+            label: Text
+            name: '-541de212'
+            widget: string
+          - hint: 'Original text: Pure Goodness?, key: 16089703'
+            label: Text
+            name: '16089703'
+            widget: string
+          - hint: >-
+              Original text: Explore organic wonders! Meet farmers, discover
+              recipes, join our community. Start healthier living now!, key:
+              -70a888b5
+            label: Text
+            name: '-70a888b5'
+            widget: text
+          - hint: 'Original text: Our Organic , key: feadd29'
+            label: Text
+            name: feadd29
+            widget: string
+          - hint: 'Original text: Highlights, key: -73e219a1'
+            label: Text
+            name: '-73e219a1'
+            widget: string
+          - hint: >-
+              Original text: Discover our wide range of farm-fresh products.
+              Each category is filled with top-quality ingredients, straight
+              from nature to your table., key: 158ba008
+            label: Text
+            name: 158ba008
+            widget: text
+          - hint: 'Original text: No items found., key: 3d503d2b'
+            label: Text
+            name: 3d503d2b
+            widget: string
+          - hint: 'Original text: Explore Our Products, key: 226f4085'
+            label: Text
+            name: 226f4085
+            widget: string
+          - hint: 'Original text:  Vrisham, key: -75fc8852'
+            label: Text
+            name: '-75fc8852'
+            widget: string
+          - hint: >-
+              Original text:  has changed how I see food. They’re all about
+              freshness and honesty. I feel good knowing I’m giving my family
+              the best !, key: 3a0cc8fe
+            label: Text
+            name: 3a0cc8fe
+            widget: text
+          - hint: 'Original text: Parvathy, key: 4acf9e19'
+            label: Text
+            name: 4acf9e19
+            widget: string
+          - hint: 'Original text: Health Lover, key: -308d9384'
+            label: Text
+            name: '-308d9384'
+            widget: string
+          - hint: 'Original text: Our Blogs &n Insights, key: -728d3890'
+            label: Text
+            name: '-728d3890'
+            widget: string
+          - hint: 'Original text: Discover More on Our Blog, key: 53e12063'
+            label: Text
+            name: '53e12063'
+            widget: string
+          - hint: >-
+              Original text: Your essential guide to farming and agriculture.
+              Explore our latest posts for practical tips, insights, and trends
+              in sustainable farming., key: 746dfb7d
+            label: Text
+            name: 746dfb7d
+            widget: text
+          - hint: 'Original text: Check Out More Blogs, key: 5cedcaf0'
+            label: Text
+            name: 5cedcaf0
+            widget: string
+          - hint: 'Original text: Get the , key: 76343879'
+            label: Text
+            name: '76343879'
+            widget: string
+          - hint: 'Original text: Vrisham App, key: 70ded2af'
+            label: Text
+            name: 70ded2af
+            widget: string
+          - hint: 'Original text:  Today!, key: 32699d40'
+            label: Text
+            name: 32699d40
+            widget: string
+          - hint: >-
+              Original text: Ready to access fresh, organic goodness at your
+              fingertips? Download the Vrisham app now and start shopping with
+              ease., key: 20ed8b60
+            label: Text
+            name: 20ed8b60
+            widget: text
+          - hint: 'Original text: A Largest NPOP Certified Producer, key: -f34c63b'
+            label: Text
+            name: '-f34c63b'
+            widget: string
+          - hint: 'Original text: About us, key: 645f0031'
+            label: Text
+            name: 645f0031
+            widget: string
+          - hint: 'Original text: All rights reserved @Vrisham, key: -2ecb4ac4'
+            label: Text
+            name: '-2ecb4ac4'
+            widget: string
+          - hint: 'Original text: Designed By Emilda Solutions, key: 61207068'
+            label: Text
+            name: '61207068'
+            widget: string
+          - hint: 'Original text: contact@vrisham.in, key: -205780bb'
+            label: Text
+            name: '-205780bb'
+            widget: string
+          - hint: 'Original text: +91 - 98840 58834, key: 5c75581b'
+            label: Text
+            name: 5c75581b
+            widget: string
+          - hint: 'Original text: Privacy policy, key: -922d316'
+            label: Text
+            name: '-922d316'
+            widget: string
+          - hint: 'Original text: Terms of service, key: 1ce491c5'
+            label: Text
+            name: 1ce491c5
+            widget: string
+          - hint: 'Original text: Conclusion, key: fa0ee3f'
+            label: Text
+            name: fa0ee3f
+            widget: string
+          - hint: 'Original text: Related blogs, key: -1fa76744'
+            label: Text
+            name: '-1fa76744'
+            widget: string
+          - hint: >-
+              Original text: Discover the Essence of Freshness with Vrisham,
+              key: 3d345582
+            label: Text
+            name: 3d345582
+            widget: string
+          - hint: >-
+              Original text: Explore our categories to find the highest quality
+              ingredients, directly sourced from nature to your table., key:
+              -6a48fb59
+            label: Text
+            name: '-6a48fb59'
+            widget: text
+          - hint: 'Original text: Our Products, key: -7a5fd008'
+            label: Text
+            name: '-7a5fd008'
+            widget: string
+          - hint: >-
+              Original text: Insights, Tips, and Stories from the Heart of
+              Farming, key: -2c3e31cf
+            label: Text
+            name: '-2c3e31cf'
+            widget: string
+          - hint: 'Original text: Vrisham Organic, key: 5277c079'
+            label: Text
+            name: 5277c079
+            widget: string
+          - hint: >-
+              Original text: Freshness and Quality You Can Trust!, key:
+              -2e5c2f81
+            label: Text
+            name: '-2e5c2f81'
+            widget: string
+          - hint: >-
+              Original text: Founded in 2020 in Chennai, India, Vrisham evolved
+              from a family farm into a top supplier of fresh vegetables &
+              grains. Jana Sivathanu’s vision was to ensure freshness &
+              sustainability from farm to table. Today, Vrisham is committed to
+              quality & sustainable farming., key: -74584d67
+            label: Text
+            name: '-74584d67'
+            widget: text
+          - hint: 'Original text: Why Choose Vrisham?, key: 142f6982'
+            label: Text
+            name: 142f6982
+            widget: string
+          - hint: 'Original text: Freshness, key: 75fc1c65'
+            label: Text
+            name: 75fc1c65
+            widget: string
+          - hint: >-
+              Original text: Our direct-from-farm model ensures that all our
+              produce reaches you at its freshest., key: -35f9947c
+            label: Text
+            name: '-35f9947c'
+            widget: string
+          - hint: 'Original text: Quality, key: -75f6a721'
+            label: Text
+            name: '-75f6a721'
+            widget: string
+          - hint: >-
+              Original text: Every product we offer is the result of careful
+              cultivation and rigorous quality checks., key: -602b248a
+            label: Text
+            name: '-602b248a'
+            widget: string
+          - hint: 'Original text: Sustainability, key: -1baefe39'
+            label: Text
+            name: '-1baefe39'
+            widget: string
+          - hint: >-
+              Original text: We use organic farming techniques that improve soil
+              health and reduce environmental impact., key: 39c44390
+            label: Text
+            name: 39c44390
+            widget: text
+          - hint: 'Original text: Community Support, key: 71042a58'
+            label: Text
+            name: 71042a58
+            widget: string
+          - hint: >-
+              Original text: We believe in growing together supporting local
+              farmers and contributing to community well-being., key: -7fdaf35b
+            label: Text
+            name: '-7fdaf35b'
+            widget: text
+          - hint: >-
+              Original text: We promise top-tier organic products, caring for
+              both you and the planet. From farm to table, expect quality,
+              sustainability, and your happiness., key: -6c1a1b22
+            label: Text
+            name: '-6c1a1b22'
+            widget: text
+          - hint: 'Original text: Jana Sivathanu, key: -584f2363'
+            label: Text
+            name: '-584f2363'
+            widget: string
+          - hint: 'Original text: Founder and CEO, key: 2ad146d3'
+            label: Text
+            name: 2ad146d3
+            widget: string
+          - hint: 'Original text: Our Promise, key: -1472c7f9'
+            label: Text
+            name: '-1472c7f9'
+            widget: string
+          - hint: >-
+              Original text: “ Vrisham stands for transparency and quality. We
+              promise to deliver not just food, but a farm-fresh experience that
+              brings joy and health to your family’s table. Join us on this
+              journey of freshness, and taste the difference that genuine care
+              and quality bring to your meals. “, key: -4ec2e768
+            label: Text
+            name: '-4ec2e768'
+            widget: text
+          - hint: 'Original text: Need an expert?, key: 285d700c'
+            label: Text
+            name: 285d700c
+            widget: string
+          - hint: >-
+              Original text:  you are more than welcomed to leave your contact
+              info and we will be in touch shortly, key: f99e28f
+            label: Text
+            name: f99e28f
+            widget: string
+          - hint: 'Original text: Visit us, key: 624d95b3'
+            label: Text
+            name: 624d95b3
+            widget: string
+          - hint: >-
+              Original text: Pushpagiri First Street,Pushpagiri Rd, Padappai,
+              Tamil Nadu 602301, key: -cb6ec94
+            label: Text
+            name: '-cb6ec94'
+            widget: string
+          - hint: 'Original text: Call us, key: -7c14e080'
+            label: Text
+            name: '-7c14e080'
+            widget: string
+          - hint: 'Original text: +91-098840 58834, key: -3c5d08bb'
+            label: Text
+            name: '-3c5d08bb'
+            widget: string
+          - hint: 'Original text: Mail us, key: -6b40d679'
+            label: Text
+            name: '-6b40d679'
+            widget: string
+          - hint: 'Original text: sales@vrisham.com, key: -279989b3'
+            label: Text
+            name: '-279989b3'
+            widget: string
+          - hint: 'Original text: contact@vrisham.com, key: 15675361'
+            label: Text
+            name: '15675361'
+            widget: string
+          - hint: 'Original text: Let’s Connect, key: -74425da1'
+            label: Text
+            name: '-74425da1'
+            widget: string
+          - hint: >-
+              Original text: Thank you! Your submission has been received!, key:
+              5a0ea5a1
+            label: Text
+            name: 5a0ea5a1
+            widget: string
+          - hint: >-
+              Original text: Oops! Something went wrong while submitting the
+              form., key: -7c112e99
+            label: Text
+            name: '-7c112e99'
+            widget: string
+          - hint: 'Original text: FAQ, key: 10ef6'
+            label: Text
+            name: 10ef6
+            widget: string
+          - hint: >-
+              Original text: How can I find out about promotions or discounts?,
+              key: 3623ac8f
+            label: Text
+            name: 3623ac8f
+            widget: string
+          - hint: >-
+              Original text: The best way to stay informed about our promotions
+              is follow us on our social media channels. We frequently post
+              updates and special offers!, key: 63acd90b
+            label: Text
+            name: 63acd90b
+            widget: text
+          - hint: >-
+              Original text: What makes Vrisham’s products organic?, key:
+              -dec17ff
+            label: Text
+            name: '-dec17ff'
+            widget: string
+          - hint: >-
+              Original text: Vrisham’s products are certified organic, grown
+              without synthetic pesticides, fertilizers, or GMOs, ensuring
+              natural and eco-friendly farming practices., key: 2bbcc46f
+            label: Text
+            name: 2bbcc46f
+            widget: text
+          - hint: >-
+              Original text: Can I find out more about where Vrisham’s products
+              come from?, key: -7c768868
+            label: Text
+            name: '-7c768868'
+            widget: string
+          - hint: >-
+              Original text: Yes, detailed information about the origins of
+              Vrisham’s products is available on our website, showcasing the
+              farms and sustainable methods we use., key: 3e077625
+            label: Text
+            name: '3e077625'
+            widget: text
+          - hint: 'Original text: What payment methods do you accept?, key: 66060b65'
+            label: Text
+            name: 66060b65
+            widget: string
+          - hint: >-
+              Original text: We accept major credit cards, debit cards, PayPal,
+              and other secure online payment options for your convenience.,
+              key: -677d09d9
+            label: Text
+            name: '-677d09d9'
+            widget: text
+          - hint: 'Original text: Schedule A Farm Visit, key: -3e0b4b17'
+            label: Text
+            name: '-3e0b4b17'
+            widget: string
+          - hint: 'Original text: Experience Farm Freshness Up Close!, key: 673ee35f'
+            label: Text
+            name: 673ee35f
+            widget: string
+          - hint: 'Original text: Select Date:, key: 29bd0628'
+            label: Text
+            name: 29bd0628
+            widget: string
+          - hint: 'Original text: Name:, key: 478e6ef'
+            label: Text
+            name: 478e6ef
+            widget: string
+          - hint: 'Original text: Email:, key: 7bec143e'
+            label: Text
+            name: 7bec143e
+            widget: string
+          - hint: 'Original text: Phone:, key: -718ea354'
+            label: Text
+            name: '-718ea354'
+            widget: string
+      - label: Links
+        name: links
+        file: cms/_data/links.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Links
+          - hint: 'Original link: /, key: 2f'
+            label: Link
+            name: 2f
+            widget: string
+          - hint: 'Original link: /about-us/, key: -766f6c3e'
+            label: Link
+            name: '-766f6c3e'
+            widget: string
+          - hint: 'Original link: /products/, key: -6535e004'
+            label: Link
+            name: '-6535e004'
+            widget: string
+          - hint: 'Original link: /blogs/, key: 63a5be2d'
+            label: Link
+            name: 63a5be2d
+            widget: string
+          - hint: 'Original link: /contact/, key: 16bdc13e'
+            label: Link
+            name: 16bdc13e
+            widget: string
+          - hint: 'Original link: #, key: 23'
+            label: Link
+            name: '23'
+            widget: string
+          - hint: 'Original link: /popup-page/, key: 49399f90'
+            label: Link
+            name: 49399f90
+            widget: string
+          - hint: >-
+              Original link:
+              https://play.google.com/store/apps/details?id=com.emilda.vrishamcustomerapp,
+              key: -55cedb60
+            label: Link
+            name: '-55cedb60'
+            widget: string
+          - hint: 'Original link: mailto:contact@vrisham.in, key: -6f57a6b3'
+            label: Link
+            name: '-6f57a6b3'
+            widget: string
+          - hint: 'Original link: tel:9884058834, key: d394bc0'
+            label: Link
+            name: d394bc0
+            widget: string
+          - hint: 'Original link: tel:09884058834, key: -436579ae'
+            label: Link
+            name: '-436579ae'
+            widget: string
+          - hint: 'Original link: mailto:sales@vrisham.com, key: 6a7f3b45'
+            label: Link
+            name: 6a7f3b45
+            widget: string
+          - hint: 'Original link: http://contact@vrisham.com, key: -4cec83f1'
+            label: Link
+            name: '-4cec83f1'
+            widget: string
+      - label: Images
+        name: images
+        file: cms/_data/images.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Images
+          - label: Image
+            name: '26666e57'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i5d9259e7
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i7ebee48
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '47859681'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-7b475fbf'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-46a23d46'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 3c85b8f7
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-4094d8ef'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-6dc19f3a'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-651cbea9'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 5413fa6c
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 1bb8780e
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-242a1eb9'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 4b5242ee
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 84efe4c
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-75f077de'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-75e2605d'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-75fe8f5f'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-760ca6e0'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 6bf4a2d8
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-5be72bab'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 4640c67
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 7602530c
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 34043efb
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 317f733b
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-521b40a5'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 5e7e05dd
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 15a0588c
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-444d5439'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-7636ed63'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-34e26d51'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-34f084d2'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-5bf42376'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-3559dce7'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-77c17f7f'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 6d876ad8
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-7181fe13'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '7e552638'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-4cc49e87'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-17de6346'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 1d07d7fb
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 61e0883a
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 17bb1a0d
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-4ee95f99'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-4ef7771a'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-4f13a61c'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 1d09125
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+publish_mode: editorial_workflow

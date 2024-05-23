@@ -1,0 +1,11 @@
+<svg id="Link" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Icon_Frame_Clip_Content_Mask_" data-name="Icon [Frame Clip Content Mask]" width="7.3" height="14" fill="none"/>
+    </clipPath>
+  </defs>
+  <rect id="Link_Frame_Background_" data-name="Link [Frame Background]" width="32" height="32" rx="16" fill="#60992d"/>
+  <g id="Icon_Clip_Content_" data-name="Icon (Clip Content)" transform="translate(12.34 8.13)" clip-path="url(#clip-path)">
+    <path id="Vector" d="M4.725,0V-6.081H6.862L7.177-8.45H4.725V-9.957a1.234,1.234,0,0,1,.233-.835,1.284,1.284,0,0,1,1-.315l1.315-.014V-13.23a16.549,16.549,0,0,0-1.917-.1,3.72,3.72,0,0,0-1.685.363A2.52,2.52,0,0,0,2.561-11.9,3.371,3.371,0,0,0,2.15-10.19V-8.45H0v2.369H2.15V0Z" transform="translate(0 13.478)" fill="#fff"/>
+  </g>
+</svg>
