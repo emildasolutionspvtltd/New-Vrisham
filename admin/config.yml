@@ -3,7 +3,7 @@ backend:
   accept_roles:
     - admin
     - editor
-  branch: main
+  branch: master
 media_folder: theme/assets/images
 public_folder: /assets/images
 collections:
@@ -1066,6 +1066,10 @@ collections:
             label: Text
             name: '-718ea354'
             widget: string
+          - hint: 'Original text: Back to Home, key: -74c2c295'
+            label: Text
+            name: '-74c2c295'
+            widget: string
       - label: Links
         name: links
         file: cms/_data/links.json
@@ -1102,12 +1106,9 @@ collections:
             label: Link
             name: 49399f90
             widget: string
-          - hint: >-
-              Original link:
-              https://play.google.com/store/apps/details?id=com.emilda.vrishamcustomerapp,
-              key: -55cedb60
+          - hint: 'Original link: /web-app/, key: af47636'
             label: Link
-            name: '-55cedb60'
+            name: af47636
             widget: string
           - hint: 'Original link: mailto:contact@vrisham.in, key: -6f57a6b3'
             label: Link
@@ -1229,6 +1230,45 @@ collections:
                 widget: string
                 required: false
           - label: Image
+            name: '-242a1eb9'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 4b5242ee
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 84efe4c
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
             name: '-4094d8ef'
             widget: object
             fields:
@@ -1282,45 +1322,6 @@ collections:
                 required: false
           - label: Image
             name: 1bb8780e
-            widget: object
-            fields:
-              - name: url
-                label: Image Url
-                widget: image
-                allow_multiple: false
-                required: false
-              - name: alt
-                label: Image Alt
-                widget: string
-                required: false
-          - label: Image
-            name: '-242a1eb9'
-            widget: object
-            fields:
-              - name: url
-                label: Image Url
-                widget: image
-                allow_multiple: false
-                required: false
-              - name: alt
-                label: Image Alt
-                widget: string
-                required: false
-          - label: Image
-            name: 4b5242ee
-            widget: object
-            fields:
-              - name: url
-                label: Image Url
-                widget: image
-                allow_multiple: false
-                required: false
-              - name: alt
-                label: Image Alt
-                widget: string
-                required: false
-          - label: Image
-            name: 84efe4c
             widget: object
             fields:
               - name: url
@@ -1737,6 +1738,19 @@ collections:
                 required: false
           - label: Image
             name: 1d09125
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-37640832'
             widget: object
             fields:
               - name: url
